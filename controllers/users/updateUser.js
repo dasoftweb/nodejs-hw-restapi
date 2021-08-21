@@ -5,7 +5,7 @@ const updateUser = async (req, res, next) => {
   const subscription = req.body.subscription;
   try {
     const result = await service.updateById(userId, { ...req.body });
-    if (subscription == null ) {
+    if (subscription == null) {
       return res.status(400).json({
         status: 'error',
         code: 400,

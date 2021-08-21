@@ -14,6 +14,15 @@ const login = async (req, res, next) => {
       });
       return;
     }
+
+    if (!user.verify) {
+      return res.status(401).json({
+        status: 'error',
+        code: 401,
+        message: 'Email is not verified',
+      });
+    }
+
     const { SECRET_KEY } = process.env;
     const payload = { id: user._id };
     const token = jwt.sign(payload, SECRET_KEY);
