@@ -11,5 +11,5 @@ const paginationLabels = {
 };
 
 module.exports = {
-    paginationLabels,
+  paginationLabels,
 };

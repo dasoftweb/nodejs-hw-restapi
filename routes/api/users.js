@@ -16,4 +16,8 @@ router.patch('/', express.json(), authenticate, ctrl.updateUser);
 
 router.patch('/avatars', authenticate, uploadAvatar.single('avatar'), ctrl.updateAvatar);
 
+router.get('/verify/:verificationToken', ctrl.verify);
+
+router.post('/verify/', ctrl.repeatVerify);
+
 module.exports = router;

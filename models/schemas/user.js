@@ -13,7 +13,7 @@ const userShema = Schema(
       type: String,
       required: [true, 'Email is required'],
       validate: [
-        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,7}$/,
+        /^[\w-]+@([\w-]+\.)+[\w-]{2,7}$/,
         'Provided email is invalid. Provide email in aaa@bbb.ccc format',
       ],
       unique: true,
@@ -22,7 +22,8 @@ const userShema = Schema(
       type: String,
       enum: {
         values: ['starter', 'pro', 'business'],
-        message: `This subscription is not allowed. Allowed values: 'starter', 'pro', 'business'`,
+        message:
+          "This subscription is not allowed. Allowed values: 'starter', 'pro', 'business'",
       },
       default: 'starter',
     },
@@ -32,6 +33,14 @@ const userShema = Schema(
     token: {
       type: String,
       default: null,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verifyToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
     },
   },
   { versionKey: false, timestamps: true },
